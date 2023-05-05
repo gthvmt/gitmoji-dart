@@ -1,0 +1,33 @@
+name: gitmoji
+description: A Dart implementation of the gitmoji-cli
+version: 1.0.0
+repository: https://github.com/gthvmt/gitmoji-dart
+
+executables:
+  gitmoji:
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+platforms:
+  windows:
+  linux:
+  macos:
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+dependencies:
+  args: ^2.4.0
+  chalkdart: ^2.0.9
+  dart_console: ^1.1.2
+  git: ^2.2.0
+  path: ^1.8.0
+
+# I would like to publish to pub.dev but a 'gitmoji' package already exists
+# I could rename the package to gitmoji_dart but that would mean you would 
+# have to run the package with 'dart run gitmoji_dart' which Im not really
+# fond of. Might do this in the future tho because the cli will most likely
+# be indirectly called by scripts, build runners or the commit hook most of
+# the time anyways.
+publish_to: none
