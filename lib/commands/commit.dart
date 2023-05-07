@@ -28,6 +28,14 @@ class CommitCommand extends Command {
     var title = argResults!['title'] as String?;
     var message = argResults!['message'] as String?;
     var scope = argResults!['scope'] as String?;
+
+    var currentDir = p.current;
+    if (!await GitDir.isGitDir(currentDir)) {
+      Console().writeErrorLine(
+          'Current directory is not a git directory. Initialize a repository first.');
+      return;
+    }
+
     final gitmojis = await _getGitmojis();
     var gitmoji =
         await Choice('Choose a gitmoji', gitmojis.toList(), displayLimit: 7)
@@ -44,13 +52,7 @@ class CommitCommand extends Command {
     if (message == null) {
       return;
     }
-    var currentDir = p.current;
-    if (!await GitDir.isGitDir(currentDir)) {
-      Console().writeErrorLine(
-          'Current directory is not a git directory. initialize a repository first.');
-      return;
-    }
-    var git = await GitDir.fromExisting(currentDir);
+    var git = await GitDir.fromExisting(currentDir, allowSubdirectory: true);
     await git.runCommand([
       'commit',
       '-m ${gitmoji.code}${scope?.isNotEmpty ?? false ? ' ($scope):' : ''} ${title.trim()}',
