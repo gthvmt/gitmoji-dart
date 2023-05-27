@@ -68,4 +68,4 @@ git commit
 `gitmoji init` also installs an alias `git cm` which will let you commit your changes without the option to edit the commit message after it has been generated (which can also be archieved by appending `--no-edit` to `git commit`).
 
 ## ⚠️ Disclaimer
-Missing a lot of features currently. Basically all besides being able to commit. Also the commit cli sometimes bugs out (at least for me using the windows terminal). If that happens to you simply clear the console and try again. 👍
+Missing a lot of features currently. Also the commit cli sometimes bugs out (at least for me using the windows terminal). If that happens to you simply clear the console and try again. 👍

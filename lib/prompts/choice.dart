@@ -62,7 +62,7 @@ class Choice<T> {
 
       if (search.isNotEmpty) {
         displayedOptions = displayedOptions
-            .where((x) => formatter(x).contains(search))
+            .where((x) => formatter(x).toLowerCase().contains(search.toLowerCase()))
             .toList();
         selection = min(displayedOptions.length - 1, selection);
       }
